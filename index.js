@@ -225,7 +225,7 @@ server.post("/drugs/manufacturer-count", (req, res)=>
      });     
 
      drugMfd = drugMfd.filter((x)=> { return x != null });
-     (drugMfd.length > 0) ? res.json("Drugs produced by " + m + " are " + drugMfd) : 
+     (drugMfd.length > 0) ? res.json("There are " + drugMfd.length + " drugs produced by " + m + " which are " + drugMfd) : 
      res.json("Error! Manufacturer not found!");
 });
 
