@@ -51,23 +51,11 @@ server.use(express.json()); //Responses will be sent as json files
 //API to return antibiotic drugs
 server.get("/drugs/antibiotics", (req, res)=>
 {
-     let drugName = []; //To hold antibiotics 
-     let a = 0;
-     drugs.forEach(()=>{
-     //Store drug name where it's an antibiotic 
-     //store null where it's not an antibiotic
-     (drugs[a].category == "Antibiotic") ? drugName[a] = drugs[a].name :
-      drugName[a] = null; 
-      a += 1;
-     });
-
-//Call lambda function that retains only antibiotics
-drugName = drugName.filter((x)=>
-{
-    return x != null
-});
-
-    res.json("In the drugs array, the following are antibiotic drugs: " + drugName);
+ //Loop through drug array and pick antibiotics
+ const antibioticDrugs = drugs.filter((each)=>{
+  return each.category == "Antibiotic"
+ });
+ res.json(antibioticDrugs);
 });
 
     
